@@ -7,11 +7,33 @@
 <body>
 
     <h1>TP3 - Akka</h1>
-
+    <hr>
+    
     <h2>Initialisation des acteurs Akka</h2>
     <form action="/akka/init" method="post">
         <button type="submit">Submit</button>
     </form>
-
+    <hr>
+    
+    <h2>Fichier à analyser</h2>
+    <form th:action="@{/akka/upload}" method="post" enctype="multipart/form-data">
+        <label for="file">Sélectionnez un fichier :</label>
+        <input type="file" id="file" name="file" required> 
+        <button type="submit">Submit</button>
+    </form>
+    <hr>
+    
+    <h2>Résultat</h2>
+    <form th:action="@{/akka/search}" method="get">
+        <label for="mot">Mot :</label>
+        <input type="text" id="mot" name="mot" required>
+        <button type="submit">Submit</button>
+    </form>
+    
+    <div th:if="${mot}">
+        <p><strong>Mot :</strong> <span th:text="${mot}"></span></p>
+        <p><strong>Nombre d'occurrences :</strong> <span th:text="${occurrences}"></span></p>
+    </div>
+    
 </body>
 </html>
